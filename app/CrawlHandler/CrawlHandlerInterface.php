@@ -9,7 +9,10 @@
 namespace App\CrawlHandler;
 
 
+
 interface CrawlHandlerInterface
 {
     public function crawl(string $url, array $extraInfo = []): array;
+
+    public function throwException(string $message, int $code = 400);
 }

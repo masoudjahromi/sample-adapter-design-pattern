@@ -9,6 +9,7 @@
 namespace App\CrawlHandler;
 
 
+use App\Exceptions\HttpXmlCrawlHandlerException;
 use Illuminate\Support\Facades\Http;
 
 class HttpXmlCrawlHandler implements CrawlHandlerInterface
@@ -27,4 +28,10 @@ class HttpXmlCrawlHandler implements CrawlHandlerInterface
 
         return $body['element'];
     }
+
+    public function throwException($message, $code = 400)
+    {
+        throw new HttpXmlCrawlHandlerException($message, $code);
+    }
+
 }

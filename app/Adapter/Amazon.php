@@ -21,8 +21,9 @@ class Amazon
     /**
      * MOCK API
      */
-    const GET_ALL_PRODUCT_URL_AMAZON = 'http://www.mocky.io/v2/5e9826e73500006d00c47f07';
-    const GET_ONE_PRODUCT_URL_AMAZON = 'http://www.mocky.io/v2/5e9793d63000005000b6df5a';
+    const BASE_URL_AMAZON = 'http://www.mocky.io/v2/';
+    const GET_ALL_PRODUCT_URL_AMAZON = '5e9826e73500006d00c47f07';
+    const GET_ONE_PRODUCT_URL_AMAZON = '5e9793d63000005000b6df5a';
 
     /**
      * @var HttpJsonCrawlHandler
@@ -37,6 +38,7 @@ class Amazon
     public function __construct(HttpJsonCrawlHandler $httpJsonCrawlHandler)
     {
         $this->httpJsonCrawlHandler = $httpJsonCrawlHandler;
+        $this->httpJsonCrawlHandler->setBaseUri(self::BASE_URL_AMAZON);
     }
 
     /**
@@ -45,6 +47,7 @@ class Amazon
      * @param int $productId
      *
      * @return array
+     * @throws \App\Exceptions\HttpJsonCrawlHandlerException
      */
     public function getProductPriceById($productId)
     {
@@ -56,6 +59,7 @@ class Amazon
      * Get all products price from Amazon
      *
      * @return array
+     * @throws \App\Exceptions\HttpJsonCrawlHandlerException
      */
     public function getAllProductPrice()
     {

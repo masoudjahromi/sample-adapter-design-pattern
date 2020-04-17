@@ -38,7 +38,7 @@ class AmazonAdapter implements VendorAdapterInterface
     {
         $allProductPrice = $this->amazon->getAllProductPrice();
         foreach ($allProductPrice as $product) {
-            $this->productRepository->addProductPrice($product['product_id'], Constant::AMAZON_ID, $product['price']);
+            $this->productRepository->addProductPrice($product->product_id, Constant::AMAZON_ID, $product->price);
         }
     }
 
